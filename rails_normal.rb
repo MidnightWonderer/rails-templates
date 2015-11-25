@@ -27,18 +27,9 @@ end
 remove_file "Gemfile"
 copy_file 'rails_docker/Gemfile.txt', 'Gemfile'
 
-# Docker
-remove_file 'docker-compose.yml'
-copy_file 'rails_docker/docker-compose.yml', 'docker-compose.yml'
-gsub_file 'docker-compose.yml', '#{app_name}', "#{app_name}"
-
-remove_file '.dockerignore'
-copy_file 'rails_docker/.dockerignore', '.dockerignore'
-
-
 # Database.yml
 remove_file 'config/database.yml'
-copy_file 'rails_docker/database.yml', 'config/database.yml'
+copy_file 'rails_normal/database.yml', 'config/database.yml'
 gsub_file 'config/database.yml', '#{app_name}', "#{app_name}"
 
 after_bundle do
